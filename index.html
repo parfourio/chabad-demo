@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonoma Valley Chabad Jewish Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #faf7f1;
+      --cream-dark: #f0e9dc;
+      --wine: #7c2d3e;
+      --wine-dark: #5c1f2c;
+      --wine-light: #a03d51;
+      --gold: #c9913a;
+      --gold-light: #e0ae62;
+      --gold-pale: #fdf3e3;
+      --text: #1e120a;
+      --text-mid: #5a3e2b;
+      --text-muted: #8a7060;
+      --white: #ffffff;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--white);
+      border-bottom: 1px solid rgba(124,45,62,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--wine); }
+
+    .nav-donate {
+      background: var(--wine);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-donate:hover { background: var(--wine-dark) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--wine);
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0;
+      background: var(--white);
+      z-index: 998;
+      padding: 16px 0 24px;
+      border-bottom: 2px solid var(--cream-dark);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 13px 32px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--cream-dark);
+      transition: background 0.2s;
+    }
+    .mobile-menu a:hover { background: var(--gold-pale); color: var(--wine); }
+    .mobile-menu a:last-child { border-bottom: none; font-weight: 700; color: var(--wine); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 600px;
+      background: url('https://www.svjewishcenter.com/templates/1035/images/local/banner_image.jpg') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(30,18,10,0.82) 0%, rgba(30,18,10,0.55) 50%, rgba(30,18,10,0.25) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 64px;
+      max-width: 640px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(201,145,58,0.25);
+      border: 1px solid rgba(201,145,58,0.5);
+      color: var(--gold-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-wine {
+      background: var(--wine);
+      color: var(--white);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-wine:hover { background: var(--wine-dark); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.5);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* ── SHABBAT STRIP ── */
+    .shabbat-strip {
+      background: var(--wine);
+      padding: 20px 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .shabbat-item {
+      text-align: center;
+      color: var(--white);
+    }
+
+    .shabbat-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+    }
+
+    .shabbat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .shabbat-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 3px;
+    }
+
+    .shabbat-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ── SECTION SHARED ── */
+    .section { padding: 80px 48px; }
+
+    .section-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 16px 0 32px;
+    }
+
+    /* ── WELCOME ── */
+    .welcome-section {
+      background: var(--white);
+    }
+
+    .welcome-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .welcome-text p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .welcome-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .pillar {
+      background: var(--gold-pale);
+      border: 1px solid rgba(201,145,58,0.2);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .pillar-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .pillar-text strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--wine);
+      margin-bottom: 3px;
+    }
+    .pillar-text span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .welcome-rabbi {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(124,45,62,0.1);
+    }
+
+    .rabbi-photo {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .rabbi-info {
+      padding: 28px 32px;
+    }
+
+    .rabbi-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--wine);
+      margin-bottom: 4px;
+    }
+
+    .rabbi-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .rabbi-bio {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── PROGRAMS ── */
+    .programs-section {
+      background: var(--cream);
+    }
+
+    .programs-header {
+      max-width: 1100px;
+      margin: 0 auto 48px;
+    }
+
+    .programs-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .program-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      height: 240px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(124,45,62,0.2);
+    }
+
+    .program-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .program-card:hover img { transform: scale(1.05); }
+
+    .program-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,18,10,0.85) 0%, rgba(30,18,10,0.3) 60%, transparent 100%);
+    }
+
+    .program-card-label {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      padding: 20px 22px;
+    }
+
+    .program-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .program-card-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* ── EVENTS ── */
+    .events-section {
+      background: var(--white);
+    }
+
+    .events-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .event-list { display: flex; flex-direction: column; gap: 0; }
+
+    .event-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      transition: background 0.2s;
+    }
+    .event-item:last-child { border-bottom: none; }
+
+    .event-date-block {
+      flex-shrink: 0;
+      width: 52px;
+      text-align: center;
+    }
+
+    .event-month {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .event-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1;
+    }
+
+    .event-info {}
+
+    .event-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .event-time {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .shabbat-card {
+      background: var(--wine);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      color: var(--white);
+      position: sticky;
+      top: 90px;
+    }
+
+    .shabbat-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .shabbat-card-location {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      margin-bottom: 28px;
+    }
+
+    .shabbat-row {
+      margin-bottom: 20px;
+    }
+
+    .shabbat-row-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+
+    .shabbat-row-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .shabbat-row-day {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 3px;
+    }
+
+    .shabbat-card-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 24px 0;
+    }
+
+    .torah-portion {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+
+    .torah-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    /* ── FEATURED PROGRAMS ── */
+    .featured-section {
+      background: var(--cream);
+    }
+
+    .featured-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .featured-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr auto;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(124,45,62,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .featured-card:hover {
+      box-shadow: 0 8px 32px rgba(124,45,62,0.12);
+      transform: translateY(-2px);
+    }
+
+    .featured-img {
+      height: 160px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-info {
+      padding: 28px 32px;
+    }
+
+    .featured-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .featured-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--wine);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .featured-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .featured-action {
+      padding: 28px 32px;
+      flex-shrink: 0;
+    }
+
+    .btn-more {
+      display: inline-block;
+      border: 2px solid var(--wine);
+      color: var(--wine);
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-more:hover { background: var(--wine); color: var(--white); }
+
+    /* ── DAILY THOUGHT ── */
+    .thought-section {
+      background: linear-gradient(135deg, var(--wine-dark) 0%, var(--wine) 100%);
+      padding: 80px 48px;
+      text-align: center;
+    }
+
+    .thought-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+
+    .thought-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .thought-body {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+
+    .btn-read-more {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-read-more:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+    /* ── MAILING LIST ── */
+    .mailing-section {
+      background: var(--gold-pale);
+      padding: 72px 48px;
+      text-align: center;
+      border-top: 1px solid rgba(201,145,58,0.2);
+      border-bottom: 1px solid rgba(201,145,58,0.2);
+    }
+
+    .mailing-section .section-title { color: var(--wine); }
+
+    .mailing-form {
+      display: flex;
+      gap: 12px;
+      max-width: 560px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .mailing-form input {
+      flex: 1;
+      min-width: 180px;
+      padding: 13px 16px;
+      border: 1px solid rgba(124,45,62,0.25);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .mailing-form input:focus { border-color: var(--wine); }
+
+    .btn-subscribe {
+      background: var(--wine);
+      color: var(--white);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-subscribe:hover { background: var(--wine-dark); }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--white);
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info-block {
+      background: var(--wine);
+      border-radius: var(--radius);
+      padding: 40px;
+      color: var(--white);
+    }
+
+    .contact-block-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .contact-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+
+    .contact-row-text strong {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 3px;
+    }
+
+    .contact-row-text span {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+    }
+
+    .contact-form-side .section-title { color: var(--wine); }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(124,45,62,0.2);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--wine); }
+    .form-group textarea { height: 100px; resize: vertical; }
+
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn-contact {
+      width: 100%;
+      background: var(--wine);
+      color: var(--white);
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-contact:hover { background: var(--wine-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 56px 48px 32px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer-brand-sub {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    .footer-heading {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+    .footer-par4 { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    .footer-par4 a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .welcome-inner { grid-template-columns: 1fr; gap: 48px; }
+      .programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .events-inner { grid-template-columns: 1fr; }
+      .shabbat-card { position: static; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .featured-card { grid-template-columns: 200px 1fr auto; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero {
+        height: 520px;
+        background-size: auto 100%;
+        background-position: 40% center;
+      }
+      .hero-content { padding: 0 24px; }
+      .hero h1 { font-size: 2.4rem; }
+
+      .shabbat-strip { padding: 20px 24px; gap: 20px; }
+      .shabbat-divider { display: none; }
+
+      .section { padding: 60px 24px; }
+      .thought-section { padding: 60px 24px; }
+      .mailing-section { padding: 56px 24px; }
+      footer { padding: 48px 24px 24px; }
+
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-img { height: 200px; }
+      .featured-action { padding: 0 28px 28px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .welcome-pillars { grid-template-columns: 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="nav-logo">
+    <img src="https://www.svjewishcenter.com/templates/1035/images/logo.png"
+         alt="Chabad"
+         onerror="this.style.display='none'" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sonoma Valley Chabad</span>
+      <span class="nav-logo-sub">Jewish Center</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#shabbat">Shabbat</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-donate">Donate</a></li>
+  </ul>
+
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#programs" onclick="toggleMenu()">Programs</a>
+  <a href="#events" onclick="toggleMenu()">Upcoming Events</a>
+  <a href="#shabbat" onclick="toggleMenu()">Shabbat Times</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" onclick="toggleMenu()">💛 Donate</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Sonoma Valley · Est. 2007</div>
+    <h1>Everyone is<br>Welcome Here.</h1>
+    <p>A warm, open-door community for every Jewish person in the Sonoma Valley — regardless of background, philosophy, or level of observance.</p>
+    <div class="hero-buttons">
+      <a href="#events" class="btn-wine">Upcoming Events</a>
+      <a href="#about" class="btn-ghost">Meet the Rabbi</a>
+    </div>
+  </div>
+</section>
+
+<!-- SHABBAT STRIP -->
+<div class="shabbat-strip" id="shabbat">
+  <div class="shabbat-item">
+    <div class="shabbat-label">Light Candles</div>
+    <div class="shabbat-value">7:30 PM</div>
+    <div class="shabbat-sub">Friday, April 17</div>
+  </div>
+  <div class="shabbat-divider"></div>
+  <div class="shabbat-item">
+    <div class="shabbat-label">Shabbat Ends</div>
+    <div class="shabbat-value">8:30 PM</div>
+    <div class="shabbat-sub">Saturday, April 18</div>
+  </div>
+  <div class="shabbat-divider"></div>
+  <div class="shabbat-item">
+    <div class="shabbat-label">Torah Portion</div>
+    <div class="shabbat-value">Tazria-Metzora</div>
+    <div class="shabbat-sub">This week</div>
+  </div>
+  <div class="shabbat-divider"></div>
+  <div class="shabbat-item">
+    <div class="shabbat-label">Upcoming Holiday</div>
+    <div class="shabbat-value">Second Passover</div>
+    <div class="shabbat-sub">May 1</div>
+  </div>
+</div>
+
+<!-- ABOUT / WELCOME -->
+<section class="section welcome-section" id="about">
+  <div class="welcome-inner">
+    <div class="welcome-text">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">A Place That<br>Feels Like Home.</h2>
+      <div class="divider"></div>
+      <p>Chabad Jewish Center of Sonoma Valley is dedicated to providing an open-door environment for strengthening and enhancing Jewish values and identity — for every person, regardless of background, philosophy, or level of commitment.</p>
+      <p>Whether you're looking to connect with your heritage, celebrate Shabbat with community, enroll your children in Jewish education, or simply explore — you belong here. No affiliation required, no expectations attached.</p>
+
+      <div class="welcome-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">✡️</div>
+          <div class="pillar-text">
+            <strong>All Are Welcome</strong>
+            <span>No membership, no judgment — just community</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📚</div>
+          <div class="pillar-text">
+            <strong>Jewish Education</strong>
+            <span>Classes and learning for every age and level</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🕍</div>
+          <div class="pillar-text">
+            <strong>Shabbat & Holidays</strong>
+            <span>Weekly services, candle lighting, and community meals</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">👨‍👩‍👧</div>
+          <div class="pillar-text">
+            <strong>Youth Programs</strong>
+            <span>Engaging programming for children and teens</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="welcome-rabbi">
+      <img class="rabbi-photo"
+           src="https://www.svjewishcenter.com/templates/1035/images/local/rabbi.jpg"
+           alt="Rabbi Mendy Wenger"
+           onerror="this.style.background='linear-gradient(135deg, #f0e9dc 0%, #e5d6c0 100%)'; this.style.height='360px'; this.style.display='block';" />
+      <div class="rabbi-info">
+        <div class="rabbi-name">Rabbi Mendy Wenger</div>
+        <div class="rabbi-title">Rabbi · Sonoma Valley Chabad</div>
+        <div class="rabbi-bio">Rabbi Mendy Wenger leads the Sonoma Valley Chabad Jewish Center with warmth, wisdom, and a deep commitment to every member of the community. Whether you're a lifelong observer or completely new to Jewish life, Rabbi Mendy's door is always open.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section programs-section" id="programs">
+  <div class="programs-header">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Programs & Services</h2>
+    <div class="divider"></div>
+    <p class="section-body">From weekly Shabbat services to Jewish education, youth programming, and kosher catering — there's something here for every member of the community.</p>
+  </div>
+
+  <div class="programs-grid">
+    <div class="program-card">
+      <img src="https://www.svjewishcenter.com/templates/articleImages/1035/190313100_S.jpg"
+           alt="Shabbat & Holidays"
+           onerror="this.style.background='#7c2d3e'; this.style.display='block';" />
+      <div class="program-card-overlay"></div>
+      <div class="program-card-label">
+        <div class="program-card-name">Shabbat &amp; Holidays</div>
+        <div class="program-card-tag">Weekly Services</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://www.svjewishcenter.com/templates/articleImages/1035/149483090_S.jpg"
+           alt="Sonoma Jewish Academy"
+           onerror="this.style.background='#5c1f2c'; this.style.display='block';" />
+      <div class="program-card-overlay"></div>
+      <div class="program-card-label">
+        <div class="program-card-name">Sonoma Jewish Academy</div>
+        <div class="program-card-tag">Jewish Education</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://www.svjewishcenter.com/templates/articleImages/1035/59392082_S.jpg"
+           alt="Youth Center"
+           onerror="this.style.background='#a03d51'; this.style.display='block';" />
+      <div class="program-card-overlay"></div>
+      <div class="program-card-label">
+        <div class="program-card-name">Youth Center</div>
+        <div class="program-card-tag">Children & Teens</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://www.svjewishcenter.com/templates/articleImages/1035/190312694_S.jpg"
+           alt="Jewish Culture"
+           onerror="this.style.background='#7c2d3e'; this.style.display='block';" />
+      <div class="program-card-overlay"></div>
+      <div class="program-card-label">
+        <div class="program-card-name">Jewish Culture</div>
+        <div class="program-card-tag">Arts & Learning</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://www.svjewishcenter.com/templates/articleImages/1035/52109613_S.jpg"
+           alt="Jewish Women's Circle"
+           onerror="this.style.background='#5c1f2c'; this.style.display='block';" />
+      <div class="program-card-overlay"></div>
+      <div class="program-card-label">
+        <div class="program-card-name">Jewish Women's Circle</div>
+        <div class="program-card-tag">Community</div>
+      </div>
+    </div>
+
+    <div class="program-card">
+      <img src="https://www.svjewishcenter.com/templates/articleImages/1035/catering.jpg"
+           alt="Kosher Catering"
+           onerror="this.style.background='#a03d51'; this.style.display='block';" />
+      <div class="program-card-overlay"></div>
+      <div class="program-card-label">
+        <div class="program-card-name">Kosher Catering</div>
+        <div class="program-card-tag">Sonoma Valley Kosher</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section events-section" id="events">
+  <div class="events-inner">
+    <div>
+      <div class="section-tag">What's Coming Up</div>
+      <h2 class="section-title">Upcoming Events</h2>
+      <div class="divider"></div>
+
+      <div class="event-list">
+        <div class="event-item">
+          <div class="event-date-block">
+            <div class="event-month">Apr</div>
+            <div class="event-day">22</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">Women's Weekly Tanya Class</div>
+            <div class="event-time">Wednesday · 11:00 AM – 12:00 PM</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date-block">
+            <div class="event-month">Apr</div>
+            <div class="event-day">22</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">Wine &amp; Wisdom</div>
+            <div class="event-time">Wednesday · 7:00 PM – 8:00 PM</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date-block">
+            <div class="event-month">Apr</div>
+            <div class="event-day">29</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">Women's Weekly Tanya Class</div>
+            <div class="event-time">Wednesday · 11:00 AM – 12:00 PM</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date-block">
+            <div class="event-month">Apr</div>
+            <div class="event-day">29</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">Wine &amp; Wisdom</div>
+            <div class="event-time">Wednesday · 7:00 PM – 8:00 PM</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date-block">
+            <div class="event-month">May</div>
+            <div class="event-day">2</div>
+          </div>
+          <div class="event-info">
+            <div class="event-title">Shabbat Services &amp; Lunch Buffet</div>
+            <div class="event-time">Saturday · 10:00 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shabbat-card">
+      <div class="shabbat-card-title">This Shabbat</div>
+      <div class="shabbat-card-location">Sonoma, California</div>
+
+      <div class="shabbat-row">
+        <div class="shabbat-row-label">Light Candles At</div>
+        <div class="shabbat-row-time">7:30 PM</div>
+        <div class="shabbat-row-day">Friday, April 17</div>
+      </div>
+
+      <div class="shabbat-row">
+        <div class="shabbat-row-label">Shabbat Ends</div>
+        <div class="shabbat-row-time">8:30 PM</div>
+        <div class="shabbat-row-day">Saturday, April 18</div>
+      </div>
+
+      <div class="shabbat-card-divider"></div>
+
+      <div class="torah-portion">Weekly Torah Portion</div>
+      <div class="torah-name">Tazria-Metzora</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROGRAMS -->
+<section class="section featured-section">
+  <div style="max-width:1100px;margin:0 auto 40px;">
+    <div class="section-tag">Featured</div>
+    <h2 class="section-title">Join Us This Week</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="featured-grid">
+    <div class="featured-card">
+      <img class="featured-img"
+           src="https://www.svjewishcenter.com/templates/1035/images/local/wine-wisdom.jpg"
+           alt="Wine & Wisdom"
+           onerror="this.style.background='linear-gradient(135deg,#7c2d3e,#a03d51)'; this.style.display='block';" />
+      <div class="featured-info">
+        <div class="featured-tag">Weekly · Wednesdays 7–8 PM</div>
+        <div class="featured-name">Wine &amp; Wisdom</div>
+        <div class="featured-desc">Join Rabbi Mendy Wenger for a meaningful deep dive into the weekly Torah portion and its practical lessons for everyday life. Each week enjoy a bottle of kosher wine alongside great learning.</div>
+      </div>
+      <div class="featured-action">
+        <a href="#contact" class="btn-more">More Info</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <img class="featured-img"
+           src="https://www.svjewishcenter.com/templates/1035/images/local/golden-circle.jpg"
+           alt="The Golden Circle"
+           onerror="this.style.background='linear-gradient(135deg,#5c1f2c,#7c2d3e)'; this.style.display='block';" />
+      <div class="featured-info">
+        <div class="featured-tag">Intergenerational Community</div>
+        <div class="featured-name">The Golden Circle</div>
+        <div class="featured-desc">An intergenerational community bringing together seniors and families for connection, warmth, and Jewish living. A program dedicated to honoring every stage of life.</div>
+      </div>
+      <div class="featured-action">
+        <a href="#contact" class="btn-more">More Info</a>
+      </div>
+    </div>
+
+    <div class="featured-card">
+      <img class="featured-img"
+           src="https://www.svjewishcenter.com/templates/1035/images/local/womens-kabbalah.jpg"
+           alt="Women's Kabbalah Class"
+           onerror="this.style.background='linear-gradient(135deg,#a03d51,#c9913a)'; this.style.display='block';" />
+      <div class="featured-info">
+        <div class="featured-tag">Weekly · Women's Learning</div>
+        <div class="featured-name">Weekly Women's Kabbalah Class</div>
+        <div class="featured-desc">A weekly class exploring the mystical and spiritual dimensions of Jewish wisdom. Open to all women, regardless of background or prior knowledge.</div>
+      </div>
+      <div class="featured-action">
+        <a href="#contact" class="btn-more">More Info</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY THOUGHT -->
+<section class="thought-section">
+  <div class="thought-eyebrow">Daily Thought</div>
+  <div class="thought-title">Speak With Awe</div>
+  <p class="thought-body">How can a teacher bring her students to speak only good things about one another? Explain to them that the One who made heaven and earth loves each one of them deeply — and infinitely more so. And explain that if this loving Creator watches over every word said and how it is said...</p>
+  <a href="#" class="btn-read-more">Read More →</a>
+</section>
+
+<!-- MAILING LIST -->
+<section class="mailing-section">
+  <div class="section-tag" style="text-align:center;">Stay Connected</div>
+  <h2 class="section-title" style="text-align:center; margin-bottom:12px;">Join Our Mailing List</h2>
+  <p style="text-align:center; color:var(--text-muted); font-size:0.9rem; margin-bottom:28px;">Get weekly Shabbat times, event updates, and Torah insights delivered to your inbox.</p>
+  <div class="mailing-form">
+    <input type="text" placeholder="First Name" />
+    <input type="text" placeholder="Last Name" />
+    <input type="email" placeholder="Email Address" />
+    <button class="btn-subscribe">Subscribe</button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="contact-info-block">
+        <div class="contact-block-title">Visit Us</div>
+
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div class="contact-row-text">
+            <strong>Address</strong>
+            <span>858 3rd St W<br>Sonoma, CA 95476</span>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div class="contact-row-text">
+            <strong>Phone</strong>
+            <span>929-253-0820</span>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-row-text">
+            <strong>Ask the Rabbi</strong>
+            <span>Reach out anytime — no question too big or small</span>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">🕍</div>
+          <div class="contact-row-text">
+            <strong>Shabbat Services</strong>
+            <span>Every Saturday morning · All welcome</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-side">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">We'd Love<br>to Hear from You.</h2>
+      <div class="divider"></div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="jane@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label>How can we help?</label>
+        <select>
+          <option>Select...</option>
+          <option>Shabbat & Holiday Services</option>
+          <option>Education Programs</option>
+          <option>Youth Center</option>
+          <option>Kosher Catering</option>
+          <option>Donate / Support</option>
+          <option>Ask the Rabbi</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us a little about yourself or what you're looking for..."></textarea>
+      </div>
+
+      <button class="btn-contact">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Sonoma Valley Chabad Jewish Center</div>
+      <div class="footer-brand-sub">Sonoma, California</div>
+      <p class="footer-tagline">An open-door community for every Jewish person in the Sonoma Valley. All are welcome — regardless of background, philosophy, or level of observance.</p>
+    </div>
+
+    <div>
+      <div class="footer-heading">Programs</div>
+      <ul class="footer-links">
+        <li><a href="#programs">Shabbat &amp; Holidays</a></li>
+        <li><a href="#programs">Sonoma Jewish Academy</a></li>
+        <li><a href="#programs">Youth Center</a></li>
+        <li><a href="#programs">Jewish Women's Circle</a></li>
+        <li><a href="#programs">Kosher Catering</a></li>
+        <li><a href="#programs">Wine &amp; Wisdom</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-heading">Visit</div>
+      <ul class="footer-links">
+        <li><a href="#events">Upcoming Events</a></li>
+        <li><a href="#shabbat">Shabbat Times</a></li>
+        <li><a href="#about">Meet the Rabbi</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#contact">Donate</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 Sonoma Valley Chabad Jewish Center · 858 3rd St W, Sonoma, CA 95476 · 929-253-0820</div>
+    <div class="footer-par4">Demo by <a href="https://parfour.io">Par4 Technologies</a></div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 72;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
