@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jewish Culture — Sonoma Valley Chabad Jewish Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #faf7f1;
+      --cream-dark: #f0e9dc;
+      --wine: #7c2d3e;
+      --wine-dark: #5c1f2c;
+      --wine-light: #a03d51;
+      --gold: #c9913a;
+      --gold-light: #e0ae62;
+      --gold-pale: #fdf3e3;
+      --text: #1e120a;
+      --text-mid: #5a3e2b;
+      --text-muted: #8a7060;
+      --white: #ffffff;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: var(--white);
+      border-bottom: 1px solid rgba(124,45,62,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--wine); }
+    .nav-links a.active { color: var(--wine); font-weight: 700; }
+
+    .nav-donate {
+      background: var(--wine);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-donate:hover { background: var(--wine-dark) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--wine);
+      border-radius: 2px;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0;
+      background: var(--white);
+      z-index: 998;
+      padding: 16px 0 24px;
+      border-bottom: 2px solid var(--cream-dark);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 13px 32px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--cream-dark);
+      transition: background 0.2s;
+    }
+    .mobile-menu a:hover { background: var(--gold-pale); color: var(--wine); }
+    .mobile-menu a:last-child { border-bottom: none; font-weight: 700; color: var(--wine); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      height: 420px;
+      background: url('https://w2.chabad.org/media/images/1097/tBBf10976224.jpg') center 30% / cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,18,10,0.88) 0%, rgba(30,18,10,0.45) 60%, rgba(30,18,10,0.2) 100%);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 64px 52px;
+      max-width: 800px;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .breadcrumb a {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--gold-light); }
+    .breadcrumb span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .breadcrumb-current {
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .page-hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      background: var(--white);
+      padding: 64px 48px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .intro-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .intro-text .section-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .intro-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .intro-text p {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .stat-box {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 20px 18px;
+      border-left: 3px solid var(--gold);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .intro-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 380px;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* ── PROGRAMS GRID ── */
+    .programs-section {
+      padding: 80px 48px;
+      background: var(--cream);
+    }
+    .programs-header {
+      max-width: 1100px;
+      margin: 0 auto 56px;
+    }
+    .programs-header .section-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .programs-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .programs-header p {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .culture-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .culture-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .culture-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(124,45,62,0.14);
+    }
+    .culture-card-img {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: var(--cream-dark);
+    }
+    .culture-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s;
+    }
+    .culture-card:hover .culture-card-img img { transform: scale(1.05); }
+    .culture-card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--wine);
+      color: var(--white);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .culture-card-body {
+      padding: 24px 24px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .culture-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--wine);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .culture-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .culture-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--cream-dark);
+    }
+    .culture-card-meta {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .btn-learn {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--wine);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s;
+    }
+    .btn-learn:hover { gap: 9px; }
+
+    /* ── SPOTLIGHT ── */
+    .spotlight-section {
+      background: var(--wine);
+      padding: 80px 48px;
+    }
+    .spotlight-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .spotlight-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 420px;
+    }
+    .spotlight-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .spotlight-text .section-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+    .spotlight-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .spotlight-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .spotlight-text p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .spotlight-features {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .spotlight-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .spotlight-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(201,145,58,0.2);
+      border: 1px solid rgba(201,145,58,0.4);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .spotlight-feature-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .spotlight-feature-text span {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .btn-gold {
+      display: inline-block;
+      margin-top: 32px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    /* ── UPCOMING EVENTS ── */
+    .events-section {
+      padding: 80px 48px;
+      background: var(--white);
+    }
+    .events-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .events-header {
+      margin-bottom: 48px;
+    }
+    .events-header .section-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .events-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.15;
+    }
+
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .event-card {
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .event-card:hover {
+      border-color: var(--wine);
+      box-shadow: 0 4px 20px rgba(124,45,62,0.1);
+    }
+    .event-date-block {
+      text-align: center;
+      background: var(--wine);
+      border-radius: 8px;
+      padding: 10px 14px;
+      flex-shrink: 0;
+      min-width: 52px;
+    }
+    .event-month {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .event-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .event-info { flex: 1; }
+    .event-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .event-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .event-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-pale);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* ── GET INVOLVED CTA ── */
+    .cta-section {
+      padding: 80px 48px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .cta-inner .section-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .cta-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--wine);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cta-inner p {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-wine {
+      display: inline-block;
+      background: var(--wine);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-wine:hover { background: var(--wine-dark); }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--wine);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid var(--wine);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--wine); color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 56px 48px 32px;
+      color: rgba(255,255,255,0.65);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer-brand-sub {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+    .footer-heading {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+    .footer-par4 { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    .footer-par4 a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .intro-inner { grid-template-columns: 1fr; gap: 40px; }
+      .intro-image { height: 280px; }
+      .spotlight-inner { grid-template-columns: 1fr; gap: 40px; }
+      .spotlight-img { height: 300px; }
+      .culture-grid { grid-template-columns: repeat(2, 1fr); }
+      .event-cards { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .page-hero { height: 340px; }
+      .page-hero-content { padding: 0 24px 36px; }
+      .page-hero h1 { font-size: 2.2rem; }
+
+      .intro-section,
+      .programs-section,
+      .spotlight-section,
+      .events-section,
+      .cta-section { padding: 56px 24px; }
+
+      .culture-grid { grid-template-columns: 1fr; }
+      .event-cards { grid-template-columns: 1fr; }
+      .intro-stats { grid-template-columns: 1fr 1fr; }
+
+      footer { padding: 40px 24px 24px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="https://www.chabad.org/templates/articlecco_cdo/aid/4958340/jewish/Favicon.ico"
+         alt="Chabad"
+         onerror="this.style.display='none'" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Sonoma Valley Chabad</span>
+      <span class="nav-logo-sub">Jewish Center</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html#programs">Programs</a></li>
+    <li><a href="index.html#events">Events</a></li>
+    <li><a href="index.html#shabbat">Shabbat</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-donate">Donate</a></li>
+  </ul>
+
+  <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html#programs">Programs</a>
+  <a href="index.html#events">Events</a>
+  <a href="index.html#shabbat">Shabbat</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="index.html#contact">Donate</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="index.html#programs">Programs</a>
+      <span>›</span>
+      <span class="breadcrumb-current">Jewish Culture</span>
+    </div>
+    <h1>Jewish Culture</h1>
+    <p>Celebrating Jewish art, history, food, film, and community life — right here in the Sonoma Valley.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <div class="section-tag">Our Mission</div>
+      <h2 class="section-title">Where Heritage<br>Comes Alive.</h2>
+      <div class="divider"></div>
+      <p>Jewish culture is more than tradition — it's a living, breathing tapestry of food, music, art, film, and community. At Sonoma Valley Chabad, we bring that culture off the page and into the room.</p>
+      <p>From pop-up delis and cycling clubs to film screenings and VR experiences, our Jewish Culture programming is designed for everyone — deeply observant or curious for the first time.</p>
+
+      <div class="intro-stats">
+        <div class="stat-box">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Cultural Programs</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">18</div>
+          <div class="stat-label">Years in Sonoma</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">All</div>
+          <div class="stat-label">Backgrounds Welcome</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">Free</div>
+          <div class="stat-label">Most Events</div>
+        </div>
+      </div>
+    </div>
+    <div class="intro-image">
+      <img src="https://w2.chabad.org/media/images/1097/cGxY10976222.jpg"
+           alt="Jewish community gathering"
+           onerror="this.style.background='var(--cream-dark)'" />
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS GRID -->
+<section class="programs-section">
+  <div class="programs-header">
+    <div class="section-tag">What We Offer</div>
+    <h2>Cultural Programs</h2>
+    <div class="divider"></div>
+    <p>Each program is thoughtfully designed to spark connection, curiosity, and pride in Jewish heritage — in the heart of Wine Country.</p>
+  </div>
+
+  <div class="culture-grid">
+
+    <div class="culture-card">
+      <div class="culture-card-img">
+        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80"
+             alt="Pop-Up NY Jewish Deli"
+             onerror="this.style.background='var(--cream-dark)'" />
+        <div class="culture-card-badge">Food & Community</div>
+      </div>
+      <div class="culture-card-body">
+        <div class="culture-card-title">Pop-Up NY Jewish Deli</div>
+        <div class="culture-card-desc">Authentic New York-style Jewish deli right here in Sonoma. Enjoy house-made pastrami, matzo ball soup, latkes, and more — straight from the traditions of the Lower East Side. A taste of home for anyone who's ever loved a great deli.</div>
+        <div class="culture-card-footer">
+          <span class="culture-card-meta">Seasonal Events</span>
+          <a href="index.html#contact" class="btn-learn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="culture-card-img">
+        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80"
+             alt="Jewish Cinema"
+             onerror="this.style.background='var(--cream-dark)'" />
+        <div class="culture-card-badge">Film & Arts</div>
+      </div>
+      <div class="culture-card-body">
+        <div class="culture-card-title">Jewish Cinema</div>
+        <div class="culture-card-desc">Curated screenings of award-winning Jewish films — from Israeli cinema to Holocaust remembrance documentaries to contemporary Jewish stories from around the world. Followed by community discussion and refreshments.</div>
+        <div class="culture-card-footer">
+          <span class="culture-card-meta">Monthly Screenings</span>
+          <a href="index.html#contact" class="btn-learn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="culture-card-img">
+        <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=600&q=80"
+             alt="VR Tour of Auschwitz"
+             onerror="this.style.background='var(--cream-dark)'" />
+        <div class="culture-card-badge">History & Memory</div>
+      </div>
+      <div class="culture-card-body">
+        <div class="culture-card-title">VR Tour of Auschwitz</div>
+        <div class="culture-card-desc">An immersive virtual reality experience that takes visitors inside Auschwitz-Birkenau. Developed in partnership with Holocaust education organizations, this guided tour ensures the memory of the six million is never forgotten.</div>
+        <div class="culture-card-footer">
+          <span class="culture-card-meta">By Appointment</span>
+          <a href="index.html#contact" class="btn-learn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="culture-card-img">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=80"
+             alt="Shabbat Under the Stars"
+             onerror="this.style.background='var(--cream-dark)'" />
+        <div class="culture-card-badge">Outdoor · Shabbat</div>
+      </div>
+      <div class="culture-card-body">
+        <div class="culture-card-title">Shabbat Under the Stars</div>
+        <div class="culture-card-desc">An outdoor Shabbat experience set against the breathtaking backdrop of Sonoma wine country. Candle lighting, kiddush, and a communal meal under the open sky — a uniquely California expression of Jewish tradition.</div>
+        <div class="culture-card-footer">
+          <span class="culture-card-meta">Summer Series</span>
+          <a href="index.html#contact" class="btn-learn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="culture-card-img">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80"
+             alt="Chabad Cycling Club"
+             onerror="this.style.background='var(--cream-dark)'" />
+        <div class="culture-card-badge">Active Community</div>
+      </div>
+      <div class="culture-card-body">
+        <div class="culture-card-title">Chabad Cycling Club</div>
+        <div class="culture-card-desc">Explore the scenic roads and vineyards of Sonoma Valley with fellow members of the community. All skill levels welcome — from casual weekend riders to serious cyclists. Jewish conversation, fresh air, and great company guaranteed.</div>
+        <div class="culture-card-footer">
+          <span class="culture-card-meta">Weekly Rides</span>
+          <a href="index.html#contact" class="btn-learn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="culture-card-img">
+        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=80"
+             alt="Israel's Spokesperson to the U.N."
+             onerror="this.style.background='var(--cream-dark)'" />
+        <div class="culture-card-badge">Speaker Series</div>
+      </div>
+      <div class="culture-card-body">
+        <div class="culture-card-title">Speaker Series</div>
+        <div class="culture-card-desc">Hear from remarkable guests including diplomats, authors, and Jewish community leaders. Past speakers have included Israel's Spokesperson to the United Nations. These evenings bring the wider Jewish world to Sonoma's doorstep.</div>
+        <div class="culture-card-footer">
+          <span class="culture-card-meta">Special Events</span>
+          <a href="index.html#contact" class="btn-learn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPOTLIGHT -->
+<section class="spotlight-section">
+  <div class="spotlight-inner">
+    <div class="spotlight-img">
+      <img src="https://w2.chabad.org/media/images/1097/PgBS10976181.jpg"
+           alt="Jewish culture spotlight"
+           onerror="this.style.background='var(--wine-dark)'" />
+    </div>
+    <div class="spotlight-text">
+      <div class="section-tag">Why It Matters</div>
+      <h2>Culture Is How We<br>Pass It On.</h2>
+      <div class="spotlight-divider"></div>
+      <p>Jewish culture isn't separate from Jewish life — it is Jewish life. The stories we tell, the food we share, the art we make, the history we carry — these are the threads that connect every generation.</p>
+      <p>In Sonoma Valley, we're building a community where those threads are celebrated, explored, and handed down with joy.</p>
+
+      <div class="spotlight-features">
+        <div class="spotlight-feature">
+          <div class="spotlight-icon">🎬</div>
+          <div class="spotlight-feature-text">
+            <strong>Film, Art & Music</strong>
+            <span>Curated cultural experiences celebrating Jewish creativity</span>
+          </div>
+        </div>
+        <div class="spotlight-feature">
+          <div class="spotlight-icon">🥯</div>
+          <div class="spotlight-feature-text">
+            <strong>Food & Tradition</strong>
+            <span>The tastes of Jewish heritage brought to Sonoma's table</span>
+          </div>
+        </div>
+        <div class="spotlight-feature">
+          <div class="spotlight-icon">🌍</div>
+          <div class="spotlight-feature-text">
+            <strong>History & Memory</strong>
+            <span>Honoring the past so the next generation never forgets</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="index.html#contact" class="btn-gold">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING CULTURAL EVENTS -->
+<section class="events-section">
+  <div class="events-inner">
+    <div class="events-header">
+      <div class="section-tag">On the Calendar</div>
+      <h2>Upcoming Cultural Events</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="event-cards">
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Apr</div>
+          <div class="event-day">24</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Pop-Up NY Jewish Deli</div>
+          <div class="event-time">Thursday · 11:00 AM – 2:00 PM</div>
+          <div class="event-tag">Food & Community</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">May</div>
+          <div class="event-day">8</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Jewish Cinema Screening</div>
+          <div class="event-time">Thursday · 7:00 PM</div>
+          <div class="event-tag">Film & Arts</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">May</div>
+          <div class="event-day">16</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Cycling Club — Sonoma Loop</div>
+          <div class="event-time">Saturday evening · 6:00 PM</div>
+          <div class="event-tag">Active Community</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Jun</div>
+          <div class="event-day">6</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Shabbat Under the Stars</div>
+          <div class="event-time">Friday · Candle Lighting 7:45 PM</div>
+          <div class="event-tag">Outdoor · Shabbat</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Jun</div>
+          <div class="event-day">19</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">VR Tour of Auschwitz</div>
+          <div class="event-time">Thursday · 6:30 PM</div>
+          <div class="event-tag">History & Memory</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-month">Jul</div>
+          <div class="event-day">10</div>
+        </div>
+        <div class="event-info">
+          <div class="event-title">Speaker Series — TBA</div>
+          <div class="event-time">Thursday · 7:00 PM</div>
+          <div class="event-tag">Speaker Series</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-tag">Join Us</div>
+    <h2>Stay in the Loop on<br>All Things Culture.</h2>
+    <p>Sign up for our mailing list and be the first to know about new screenings, deli pop-ups, cycling rides, speaker events, and more happening right here in Sonoma Valley.</p>
+    <div class="cta-buttons">
+      <a href="index.html#contact" class="btn-wine">Get on the List</a>
+      <a href="index.html" class="btn-outline">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Sonoma Valley Chabad</div>
+      <div class="footer-brand-sub">Jewish Center</div>
+      <div class="footer-tagline">An open-door community for every Jewish person in the Sonoma Valley — regardless of background, philosophy, or level of observance.</div>
+    </div>
+    <div>
+      <div class="footer-heading">Programs</div>
+      <ul class="footer-links">
+        <li><a href="index.html#programs">Shabbat &amp; Holidays</a></li>
+        <li><a href="index.html#programs">Sonoma Jewish Academy</a></li>
+        <li><a href="index.html#programs">Youth Center</a></li>
+        <li><a href="jewish-culture.html">Jewish Culture</a></li>
+        <li><a href="index.html#programs">Jewish Women's Circle</a></li>
+        <li><a href="index.html#programs">Kosher Catering</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">151 Morris St, Sonoma, CA 95476</a></li>
+        <li><a href="tel:+17079356272">(707) 935-6272</a></li>
+        <li><a href="mailto:rabbi@svjewishcenter.com">rabbi@svjewishcenter.com</a></li>
+        <li><a href="index.html#contact">Contact Form</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Sonoma Valley Chabad Jewish Center. All rights reserved.</div>
+    <div class="footer-par4">Site concept by <a href="https://parfour.io" target="_blank">Par4 Technologies</a></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.mobile-menu').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
